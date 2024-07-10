@@ -2,6 +2,10 @@ import React from 'react';
 
 function EmployeeList({ employees, onDelete }) {
 
+  const handleDelete = (id) => {
+    onDelete(id);
+  };
+  
 
   return (
     <div className="employee-list">
@@ -16,6 +20,7 @@ function EmployeeList({ employees, onDelete }) {
             <th>Image</th>
             <th>Position</th>
             <th>Identification Number</th>
+            <th>Action</th> 
           </tr>
         </thead>
         <tbody>
@@ -28,13 +33,15 @@ function EmployeeList({ employees, onDelete }) {
               <td>{employee.image ? employee.image.name : ""}</td>
               <td>{employee.position}</td>
               <td>{employee.id}</td>
+              <td>
+                <button onClick={() => handleDelete(employee.id)}>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
       </table>
-                  
-                
     </div>
   );
 }
+
 export default EmployeeList;

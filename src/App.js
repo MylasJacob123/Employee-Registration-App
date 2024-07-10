@@ -1,12 +1,12 @@
 import "./App.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import AddFunction from "./components/AddFunction";
-import EmployeeList from "./components/EmployeeList"
+import EmployeeList from "./components/EmployeeList";
 
 function App() {
   const [employees, setEmployees] = useState([]);
   
-  const add = (
+  const addEmployee = (
     firstName,
     lastName,
     email,
@@ -21,10 +21,16 @@ function App() {
     ]);
   };
 
+  const deleteEmployee = (id) => {
+    setEmployees(prevEmployees =>
+      prevEmployees.filter(employee => employee.id !== id)
+    );
+  };
+
   return (
     <div className="App">
-      <AddFunction add={add} />
-      <EmployeeList employees={ employees } />
+      <AddFunction add={addEmployee} />
+      <EmployeeList employees={employees} onDelete={deleteEmployee} />
     </div>
   );
 }

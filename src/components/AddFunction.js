@@ -130,6 +130,7 @@ function AddFunction(props) {
       <br />
       <br />
       <button onClick={add}>Add</button>
+      
     </div>
   );
 }
