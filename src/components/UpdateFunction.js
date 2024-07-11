@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 
 function UpdateFunction({ employee, onUpdate }) {
   const [editData, setEditData] = useState({});
@@ -28,7 +28,7 @@ function UpdateFunction({ employee, onUpdate }) {
         <input
           type="text"
           name="firstName"
-          value={editData.firstName || ''}
+          value={editData.firstName || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -37,7 +37,7 @@ function UpdateFunction({ employee, onUpdate }) {
         <input
           type="text"
           name="lastName"
-          value={editData.lastName || ''}
+          value={editData.lastName || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -46,7 +46,7 @@ function UpdateFunction({ employee, onUpdate }) {
         <input
           type="email"
           name="email"
-          value={editData.email || ''}
+          value={editData.email || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -55,7 +55,7 @@ function UpdateFunction({ employee, onUpdate }) {
         <input
           type="tel"
           name="phoneNumber"
-          value={editData.phoneNumber || ''}
+          value={editData.phoneNumber || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -64,7 +64,7 @@ function UpdateFunction({ employee, onUpdate }) {
         <input
           type="text"
           name="position"
-          value={editData.position || ''}
+          value={editData.position || ""}
           onChange={handleInputChange}
         />
       </label>
@@ -73,7 +73,7 @@ function UpdateFunction({ employee, onUpdate }) {
         <input
           type="text"
           name="id"
-          value={editData.id || ''}
+          value={editData.id || ""}
           onChange={handleInputChange}
         />
       </label>

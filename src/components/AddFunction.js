@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import "../components/AddFunction.css"
 
 function AddFunction(props) {
   const [firstName, setFirstName] = useState("");
@@ -35,7 +36,6 @@ function AddFunction(props) {
       <br />
 
       <label for="first-name">First Name</label>
-      <br />
       <input
         id="first-name"
         name="first-name"
@@ -46,9 +46,8 @@ function AddFunction(props) {
         onChange={(event) => setFirstName(event.target.value)}
       />
       <br />
-      <br />
+
       <label for="last-name">Last Name</label>
-      <br />
       <input
         id="last-name"
         name="last-name"
@@ -59,10 +58,8 @@ function AddFunction(props) {
         onChange={(event) => setLastName(event.target.value)}
       />
       <br />
-      <br />
 
       <label for="email">Email Address</label>
-      <br />
       <input
         id="email"
         name="email"
@@ -73,10 +70,8 @@ function AddFunction(props) {
         onChange={(event) => setEmail(event.target.value)}
       />
       <br />
-      <br />
 
       <label for="phone-number">Phone Number</label>
-      <br />
       <input
         id="phone-number"
         name="phone-number"
@@ -90,7 +85,6 @@ function AddFunction(props) {
       <br />
 
       <label for="image">Image</label>
-      <br />
       <input
         id="image"
         name="image"
@@ -99,7 +93,6 @@ function AddFunction(props) {
         required
         onChange={handleFileChange}
       />
-      <br />
       <br />
 
       <label for="position">Position</label>

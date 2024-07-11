@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import AddFunction from "./components/AddFunction";
-import EmployeeList from "./components/EmployeeList";
-import UpdateFunction from "./components/UpdateFunction";
-import SearchFunction from "./components/SearchFunction";
+import AddFunction from "./components/AddFunction.js";
+import EmployeeList from "./components/EmployeeList.js";
+import UpdateFunction from "./components/UpdateFunction.js";
+import SearchFunction from "./components/SearchFunction.js";
+import "./App.css";
 
 function App() {
   const [employees, setEmployees] = useState([]);
@@ -60,18 +61,20 @@ function App() {
   );
 
   return (
-    <div className="App">
-      <SearchFunction onSearch={handleSearch} />
-      <AddFunction add={addEmployee} />
-      <EmployeeList
-        employees={filteredEmployees}
-        onDelete={deleteEmployee}
-        onEdit={editEmployee}
-      />
-      {employeeToEdit && (
-        <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
-      )}
-    </div>
+      <div className="App">
+        <SearchFunction onSearch={handleSearch} />
+        <div class="form">
+          <AddFunction add={addEmployee} />
+        </div>  
+          <EmployeeList
+            employees={filteredEmployees}
+            onDelete={deleteEmployee}
+            onEdit={editEmployee}
+          />
+          {employeeToEdit && (
+            <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
+          )}
+      </div>
   );
 }
 
