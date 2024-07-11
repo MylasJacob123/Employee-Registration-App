@@ -122,7 +122,7 @@ function AddFunction(props) {
       />
       <br />
       <br />
-      <button onClick={add}>Add</button>
+      <button className="btn" onClick={add}>Submit</button>
       
     </div>
   );

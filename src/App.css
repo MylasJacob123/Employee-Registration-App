@@ -11,14 +11,5 @@
   background-color: #42424d
 }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: whitesmoke;
-  width: 490px;
-  height: 850px;
-  border-radius: 19px;
-}
 
 

@@ -1,6 +1,7 @@
 import React from "react";
+import "../components/EmployeeRegister.css"
 
-function EmployeeList({ employees, onDelete, onEdit }) {
+function EmployeeRegister({ employees, onDelete, onEdit }) {
 
   const handleDelete = (id) => {
     onDelete(id);
@@ -12,7 +13,7 @@ function EmployeeList({ employees, onDelete, onEdit }) {
 
   return (
     <div className="employee-list">
-      <h2>Employee List</h2>
+      <h2>Employee Register</h2>
       <table>
         <thead>
           <tr>
@@ -48,4 +49,4 @@ function EmployeeList({ employees, onDelete, onEdit }) {
   );
 }
 
-export default EmployeeList;
+export default EmployeeRegister;

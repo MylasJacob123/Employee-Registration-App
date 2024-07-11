@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import AddFunction from "./components/AddFunction.js";
-import EmployeeList from "./components/EmployeeList.js";
+import EmployeeRegister from "./components/EmployeeRegister.js";
 import UpdateFunction from "./components/UpdateFunction.js";
 import SearchFunction from "./components/SearchFunction.js";
 import "./App.css";
@@ -63,10 +63,8 @@ function App() {
   return (
       <div className="App">
         <SearchFunction onSearch={handleSearch} />
-        <div class="form">
           <AddFunction add={addEmployee} />
-        </div>  
-          <EmployeeList
+          <EmployeeRegister
             employees={filteredEmployees}
             onDelete={deleteEmployee}
             onEdit={editEmployee}
