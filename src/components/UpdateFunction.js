@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "../components/UpdateFunction.css"
 
 function UpdateFunction({ employee, onUpdate }) {
   const [editData, setEditData] = useState({});
@@ -77,8 +78,8 @@ function UpdateFunction({ employee, onUpdate }) {
           onChange={handleInputChange}
         />
       </label>
-      <button onClick={handleUpdate}>Update</button>
-      <button onClick={handleCancel}>Cancel</button>
+      <button className="button" onClick={handleUpdate}>Update</button>
+      <button className="button" onClick={handleCancel}>Cancel</button>
     </div>
   );
 }

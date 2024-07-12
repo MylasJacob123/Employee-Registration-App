@@ -14,14 +14,15 @@ function App() {
     firstName,
     lastName,
     email,
+    age,
+    gender,
     phoneNumber,
-    image,
     position,
     id
   ) => {
     setEmployees((prevEmployees) => [
       ...prevEmployees,
-      { firstName, lastName, email, phoneNumber, image, position, id },
+      { firstName, lastName, email, age, gender, phoneNumber, position, id },
     ]);
   };
 

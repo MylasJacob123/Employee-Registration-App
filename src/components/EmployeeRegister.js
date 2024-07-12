@@ -20,8 +20,9 @@ function EmployeeRegister({ employees, onDelete, onEdit }) {
             <th>First Name</th>
             <th>Last Name</th>
             <th>Email Address</th>
+            <th>Age</th>
+            <th>Gender</th>
             <th>Phone Number</th>
-            <th>Image</th>
             <th>Position</th>
             <th>Identification Number</th>
             <th>Action</th> 
@@ -33,13 +34,14 @@ function EmployeeRegister({ employees, onDelete, onEdit }) {
               <td>{employee.firstName}</td>
               <td>{employee.lastName}</td>
               <td>{employee.email}</td>
+              <td>{employee.age}</td>
+              <td>{employee.gender}</td>
               <td>{employee.phoneNumber}</td>
-              <td>{employee.image ? employee.image.name : ""}</td>
               <td>{employee.position}</td>
               <td>{employee.id}</td>
               <td>
-                <button onClick={() => handleEdit(employee)}>Edit</button>
-                <button onClick={() => handleDelete(employee.id)}>Delete</button>
+                <button className="edit" onClick={() => handleEdit(employee)}>Edit</button><br />
+                <button className="delete" onClick={() => handleDelete(employee.id)}>Delete</button>
               </td>
             </tr>
           ))}

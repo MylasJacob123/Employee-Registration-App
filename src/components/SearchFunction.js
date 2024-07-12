@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../components/SearchFunction.css"
+import "../components/SearchFunction.css";
 
 const SearchFunction = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -7,18 +7,23 @@ const SearchFunction = ({ onSearch }) => {
   const handleChange = (event) => {
     const value = event.target.value;
     setSearchTerm(value);
-    onSearch(value);
+  };
+
+  const handleSearch = () => {
+    onSearch(searchTerm);
   };
 
   return (
     <div className="search">
       <label><span>Search</span></label>
-      <input className="search-input"
+      <input
+        className="search-input"
         type="text"
         placeholder="Search"
         value={searchTerm}
         onChange={handleChange}
       />
+      <button className="search-button" onClick={handleSearch}>Search</button>
     </div>
   );
 };

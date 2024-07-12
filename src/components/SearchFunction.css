@@ -17,7 +17,22 @@ span {
     height: 39px;
     font-size: 1.1em;
     background-color: #0a0a23;
-    border: none;
+    border: 1px solid #ccc;
     border-radius: 8px;
     color: #ffffff;
+    padding: 5px;
 }
+  
+  .search-button {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: #0a0a23;
+    cursor: pointer;
+  }
+  
+  .search-button:hover {
+    background-color: #ccc;
+    color: rgb(3, 36, 36);
+  }
+  

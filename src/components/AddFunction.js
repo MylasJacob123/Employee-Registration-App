@@ -1,29 +1,36 @@
 import React from "react";
 import { useState } from "react";
-import "../components/AddFunction.css"
+import "../components/AddFunction.css";
 
 function AddFunction(props) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
-  const [image, setImage] = useState(null);
   const [position, setPosition] = useState("");
   const [id, setId] = useState("");
 
   const add = () => {
-    props.add(firstName, lastName, email, phoneNumber, image, position, id);
+    props.add(
+      firstName,
+      lastName,
+      email,
+      age,
+      gender,
+      phoneNumber,
+      position,
+      id
+    );
     setFirstName("");
     setLastName("");
     setEmail("");
+    setAge("");
+    setGender("");
     setPhoneNumber("");
-    setImage(null);
     setPosition("");
     setId("");
-  };
-
-  const handleFileChange = (event) => {
-    setImage(event.target.files[1]);
   };
 
   return (
@@ -71,6 +78,32 @@ function AddFunction(props) {
       />
       <br />
 
+      <label for="age">Age</label>
+      <input
+        id="age"
+        name="age"
+        type="number"
+        placeholder="Age"
+        min="18"
+        max="60"
+        required
+        value={age}
+        onChange={(event) => setAge(event.target.value)}
+      />
+      <br />
+
+      <label for="gender">Gender</label>
+      <input
+        id="gender"
+        name="gender"
+        type="text"
+        placeholder="Gender"
+        required
+        value={gender}
+        onChange={(event) => setGender(event.target.value)}
+      />
+      <br />
+
       <label for="phone-number">Phone Number</label>
       <input
         id="phone-number"
@@ -82,21 +115,8 @@ function AddFunction(props) {
         onChange={(event) => setPhoneNumber(event.target.value)}
       />
       <br />
-      <br />
-
-      <label for="image">Image</label>
-      <input
-        id="image"
-        name="image"
-        type="file"
-        accept="image/*"
-        required
-        onChange={handleFileChange}
-      />
-      <br />
 
       <label for="position">Position</label>
-      <br />
       <input
         id="position"
         name="position"
@@ -107,10 +127,8 @@ function AddFunction(props) {
         onChange={(event) => setPosition(event.target.value)}
       />
       <br />
-      <br />
 
       <label for="ID">ID Number</label>
-      <br />
       <input
         id="ID"
         name="ID"
@@ -122,8 +140,9 @@ function AddFunction(props) {
       />
       <br />
       <br />
-      <button className="btn" onClick={add}>Submit</button>
-      
+      <button className="btn" onClick={add}>
+        Submit
+      </button>
     </div>
   );
 }
