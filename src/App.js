@@ -63,8 +63,8 @@ function App() {
 
   return (
       <div className="App">
-        <SearchFunction onSearch={handleSearch} />
           <AddFunction add={addEmployee} />
+          <SearchFunction onSearch={handleSearch} />
           <EmployeeRegister
             employees={filteredEmployees}
             onDelete={deleteEmployee}

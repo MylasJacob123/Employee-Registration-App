@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "../components/AddFunction.css";
 
 function AddFunction(props) {
@@ -11,18 +10,40 @@ function AddFunction(props) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [position, setPosition] = useState("");
   const [id, setId] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const validateEmail = (email) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
+
+  const validatePhoneNumber = (phoneNumber) => {
+    const re = /^\d{10}$/;
+    return re.test(phoneNumber);
+  };
 
   const add = () => {
-    props.add(
-      firstName,
-      lastName,
-      email,
-      age,
-      gender,
-      phoneNumber,
-      position,
-      id
-    );
+    if (!firstName || !lastName || !email || !age || !gender || !phoneNumber || !position || !id) {
+      setErrorMessage("All fields are required");
+      return;
+    }
+
+    if (!validateEmail(email)) {
+      setErrorMessage("Invalid email format");
+      return;
+    }
+
+    if (age < 18 || age > 60) {
+      setErrorMessage("Age must be between 18 and 60");
+      return;
+    }
+
+    if (!validatePhoneNumber(phoneNumber)) {
+      setErrorMessage("Phone number must be 10 digits");
+      return;
+    }
+
+    props.add(firstName, lastName, email, age, gender, phoneNumber, position, id);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -31,18 +52,18 @@ function AddFunction(props) {
     setPhoneNumber("");
     setPosition("");
     setId("");
+    setErrorMessage("");
   };
 
   return (
     <div className="employee-form">
       <h1>Employee Registration Form</h1>
       <br />
-
       <h3>Employee Details</h3>
       <hr />
       <br />
-
-      <label for="first-name">First Name</label>
+      {errorMessage && <p className="error">{errorMessage}</p>}
+      <label htmlFor="first-name">First Name</label>
       <input
         id="first-name"
         name="first-name"
@@ -54,7 +75,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="last-name">Last Name</label>
+      <label htmlFor="last-name">Last Name</label>
       <input
         id="last-name"
         name="last-name"
@@ -66,7 +87,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="email">Email Address</label>
+      <label htmlFor="email">Email Address</label>
       <input
         id="email"
         name="email"
@@ -78,7 +99,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="age">Age</label>
+      <label htmlFor="age">Age</label>
       <input
         id="age"
         name="age"
@@ -92,7 +113,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="gender">Gender</label>
+      <label htmlFor="gender">Gender</label>
       <input
         id="gender"
         name="gender"
@@ -104,7 +125,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="phone-number">Phone Number</label>
+      <label htmlFor="phone-number">Phone Number</label>
       <input
         id="phone-number"
         name="phone-number"
@@ -116,7 +137,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="position">Position</label>
+      <label htmlFor="position">Position</label>
       <input
         id="position"
         name="position"
@@ -128,7 +149,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label for="ID">ID Number</label>
+      <label htmlFor="ID">ID Number</label>
       <input
         id="ID"
         name="ID"
@@ -146,4 +167,5 @@ function AddFunction(props) {
     </div>
   );
 }
+
 export default AddFunction;

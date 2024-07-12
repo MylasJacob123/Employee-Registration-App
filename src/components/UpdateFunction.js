@@ -23,7 +23,7 @@ function UpdateFunction({ employee, onUpdate }) {
 
   return (
     <div className="edit-form">
-      <h2>Edit Employee</h2>
+      <h2 className="edit-form-h">Update Employee</h2>
       <label>
         First Name:
         <input

@@ -12,8 +12,8 @@ function EmployeeRegister({ employees, onDelete, onEdit }) {
   };
 
   return (
-    <div className="employee-list">
-      <h2>Employee Register</h2>
+    <div className="employee-register">
+      <h2 className="employee-register-h">Employee Register</h2>
       <table>
         <thead>
           <tr>

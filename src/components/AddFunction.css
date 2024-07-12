@@ -4,7 +4,7 @@
   align-items: center;
   background-color: whitesmoke;
   width: 490px;
-  height: 700px;
+  height: 800px;
   border-radius: 19px;
   padding: 20px;
 }
@@ -29,7 +29,7 @@ input {
   flex-direction: column;
   text-align: center;
   width: 240px;
-  height: 60px;
+  height: 25px;
   border-radius: 5px;
   font-size: 0.9em;
 }
@@ -41,3 +41,4 @@ input {
   font-size: 1.4em;
   color: whitesmoke;
 }
+
