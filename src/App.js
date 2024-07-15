@@ -9,6 +9,8 @@ function App() {
   const [employees, setEmployees] = useState([]);
   const [employeeToEdit, setEmployeeToEdit] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [toggle, setToggle] = useState(false); 
+  const [btn1Toggle, setBtn1Toggle] = useState(false); 
 
   const addEmployee = (
     firstName,
@@ -51,29 +53,33 @@ function App() {
     setSearchTerm(term);
   };
 
-  const filteredEmployees = employees.filter(
-    (employee) =>
-      employee.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.email.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.phoneNumber.includes(searchTerm) ||
-      employee.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      employee.id.includes(searchTerm)
+  const filteredEmployees = employees.filter((employee) =>
+    employee.id.includes(searchTerm)
   );
 
   return (
-      <div className="App">
-          <AddFunction add={addEmployee} />
-          <SearchFunction onSearch={handleSearch} />
-          <EmployeeRegister
-            employees={filteredEmployees}
-            onDelete={deleteEmployee}
-            onEdit={editEmployee}
-          />
-          {employeeToEdit && (
-            <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
-          )}
-      </div>
+    <div className="App">
+      <button onClick={() => setToggle(!toggle)} className="form-btn">
+        Employee Registration Form
+      </button>
+      {toggle && <AddFunction add={addEmployee} />}
+
+      <button onClick={() => setBtn1Toggle(!btn1Toggle)} className="form-btn">
+        Employee Register
+      </button>
+      {btn1Toggle && <SearchFunction onSearch={handleSearch} />}
+      {btn1Toggle && (
+        <EmployeeRegister
+          employees={filteredEmployees}
+          onDelete={deleteEmployee}
+          onEdit={editEmployee}
+        />
+      )}
+      
+      {employeeToEdit && (
+        <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
+      )}
+    </div>
   );
 }
 

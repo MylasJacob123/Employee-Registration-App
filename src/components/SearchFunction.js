@@ -16,14 +16,16 @@ const SearchFunction = ({ onSearch }) => {
   return (
     <div className="search">
       <label><span>Search</span></label>
-      <input
-        className="search-input"
-        type="text"
-        placeholder="Search"
-        value={searchTerm}
-        onChange={handleChange}
-      />
-      <button className="search-button" onClick={handleSearch}>Search</button>
+      <div class="search-content">
+        <input
+          className="search-input"
+          type="text"
+          placeholder="Search by ID"
+          value={searchTerm}
+          onChange={handleChange}
+        />
+        <button className="search-button" onClick={handleSearch}>Search</button>
+      </div>
     </div>
   );
 };

@@ -22,6 +22,11 @@ function AddFunction(props) {
     return re.test(phoneNumber);
   };
 
+  const validateId = (id) => {
+    const re = /^\d{2,5}$/;
+    return re.test(id);
+  }
+
   const add = () => {
     if (!firstName || !lastName || !email || !age || !gender || !phoneNumber || !position || !id) {
       setErrorMessage("All fields are required");
@@ -40,6 +45,11 @@ function AddFunction(props) {
 
     if (!validatePhoneNumber(phoneNumber)) {
       setErrorMessage("Phone number must be 10 digits");
+      return;
+    }
+
+    if (!validateId(id)) {
+      setErrorMessage("Employee ID must be between 2 and 5 digits");
       return;
     }
 
@@ -149,7 +159,7 @@ function AddFunction(props) {
       />
       <br />
 
-      <label htmlFor="ID">ID Number</label>
+      <label htmlFor="ID">Employee ID</label>
       <input
         id="ID"
         name="ID"
