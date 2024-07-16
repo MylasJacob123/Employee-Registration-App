@@ -10,7 +10,7 @@ function AddFunction(props) {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [position, setPosition] = useState("");
   const [id, setId] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errors, setErrors] = useState({});
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -25,33 +25,31 @@ function AddFunction(props) {
   const validateId = (id) => {
     const re = /^\d{2,5}$/;
     return re.test(id);
-  }
+  };
 
   const add = () => {
-    if (!firstName || !lastName || !email || !age || !gender || !phoneNumber || !position || !id) {
-      setErrorMessage("All fields are required");
+    const newErrors = {};
+
+    if (!firstName) newErrors.firstName = "First name is required";
+    if (!lastName) newErrors.lastName = "Last name is required";
+    if (!email) newErrors.email = "Email is required";
+    if (!age) newErrors.age = "Age is required";
+    if (!gender) newErrors.gender = "Gender is required";
+    if (!phoneNumber) newErrors.phoneNumber = "Phone number is required";
+    if (!position) newErrors.position = "Position is required";
+    if (!id) newErrors.id = "Employee ID is required";
+
+    if (email && !validateEmail(email)) newErrors.email = "Invalid email format";
+    if (age && (age < 18 || age > 60)) newErrors.age = "Age must be between 18 and 60";
+    if (phoneNumber && !validatePhoneNumber(phoneNumber)) newErrors.phoneNumber = "Phone number must be 10 digits";
+    if (id && !validateId(id)) newErrors.id = "Employee ID must be between 2 and 5 digits";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
-    if (!validateEmail(email)) {
-      setErrorMessage("Invalid email format");
-      return;
-    }
-
-    if (age < 18 || age > 60) {
-      setErrorMessage("Age must be between 18 and 60");
-      return;
-    }
-
-    if (!validatePhoneNumber(phoneNumber)) {
-      setErrorMessage("Phone number must be 10 digits");
-      return;
-    }
-
-    if (!validateId(id)) {
-      setErrorMessage("Employee ID must be between 2 and 5 digits");
-      return;
-    }
+    window.alert("The form has been submitted successfully!");
 
     props.add(firstName, lastName, email, age, gender, phoneNumber, position, id);
     setFirstName("");
@@ -62,7 +60,7 @@ function AddFunction(props) {
     setPhoneNumber("");
     setPosition("");
     setId("");
-    setErrorMessage("");
+    setErrors({});
   };
 
   return (
@@ -72,7 +70,6 @@ function AddFunction(props) {
       <h3>Employee Details</h3>
       <hr />
       <br />
-      {errorMessage && <p className="error">{errorMessage}</p>}
       <label htmlFor="first-name">First Name</label>
       <input
         id="first-name"
@@ -83,6 +80,7 @@ function AddFunction(props) {
         value={firstName}
         onChange={(event) => setFirstName(event.target.value)}
       />
+      {errors.firstName && <p className="error">{errors.firstName}</p>}
       <br />
 
       <label htmlFor="last-name">Last Name</label>
@@ -95,6 +93,7 @@ function AddFunction(props) {
         value={lastName}
         onChange={(event) => setLastName(event.target.value)}
       />
+      {errors.lastName && <p className="error">{errors.lastName}</p>}
       <br />
 
       <label htmlFor="email">Email Address</label>
@@ -107,6 +106,7 @@ function AddFunction(props) {
         value={email}
         onChange={(event) => setEmail(event.target.value)}
       />
+      {errors.email && <p className="error">{errors.email}</p>}
       <br />
 
       <label htmlFor="age">Age</label>
@@ -121,6 +121,7 @@ function AddFunction(props) {
         value={age}
         onChange={(event) => setAge(event.target.value)}
       />
+      {errors.age && <p className="error">{errors.age}</p>}
       <br />
 
       <label htmlFor="gender">Gender</label>
@@ -133,6 +134,7 @@ function AddFunction(props) {
         value={gender}
         onChange={(event) => setGender(event.target.value)}
       />
+      {errors.gender && <p className="error">{errors.gender}</p>}
       <br />
 
       <label htmlFor="phone-number">Phone Number</label>
@@ -145,6 +147,7 @@ function AddFunction(props) {
         value={phoneNumber}
         onChange={(event) => setPhoneNumber(event.target.value)}
       />
+      {errors.phoneNumber && <p className="error">{errors.phoneNumber}</p>}
       <br />
 
       <label htmlFor="position">Position</label>
@@ -157,6 +160,7 @@ function AddFunction(props) {
         value={position}
         onChange={(event) => setPosition(event.target.value)}
       />
+      {errors.position && <p className="error">{errors.position}</p>}
       <br />
 
       <label htmlFor="ID">Employee ID</label>
@@ -169,6 +173,7 @@ function AddFunction(props) {
         value={id}
         onChange={(event) => setId(event.target.value)}
       />
+      {errors.id && <p className="error">{errors.id}</p>}
       <br />
       <br />
       <button className="btn" onClick={add}>
