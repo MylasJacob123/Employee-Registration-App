@@ -23,7 +23,7 @@ function AddFunction(props) {
   };
 
   const validateId = (id) => {
-    const re = /^\d{2,5}$/;
+    const re = /^\d{13}$/;
     return re.test(id);
   };
 
@@ -42,7 +42,7 @@ function AddFunction(props) {
     if (email && !validateEmail(email)) newErrors.email = "Invalid email format";
     if (age && (age < 18 || age > 60)) newErrors.age = "Age must be between 18 and 60";
     if (phoneNumber && !validatePhoneNumber(phoneNumber)) newErrors.phoneNumber = "Phone number must be 10 digits";
-    if (id && !validateId(id)) newErrors.id = "Employee ID must be between 2 and 5 digits";
+    if (id && !validateId(id)) newErrors.id = "Employee ID 13 digits";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -125,15 +125,17 @@ function AddFunction(props) {
       <br />
 
       <label htmlFor="gender">Gender</label>
-      <input
-        id="gender"
+      <select id="gender"
         name="gender"
         type="text"
         placeholder="Gender"
         required
         value={gender}
-        onChange={(event) => setGender(event.target.value)}
-      />
+        onChange={(event) => setGender(event.target.value)}>
+        <option value=""></option>
+            <option value="1">Male</option>
+            <option value="2">Female</option>
+      </select>
       {errors.gender && <p className="error">{errors.gender}</p>}
       <br />
 

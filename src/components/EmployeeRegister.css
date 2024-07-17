@@ -1,9 +1,7 @@
 .employee-register {
   display: flex;
   flex-direction: column;
-  margin-top: 80px;
-  margin-bottom: 100px;
-  width: 85%;
+  margin-bottom: 20px;
   background-color: whitesmoke;
   align-items: center;
   border-radius: 10px;

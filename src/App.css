@@ -10,13 +10,17 @@ body {
 
 .App {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   background-color: #42424d;
   z-index: 1;
   min-height: 100vh;
-  gap: 10vh;
+}
+
+.toggle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 50%;
 }
 
 .form-btn {
@@ -32,9 +36,12 @@ body {
   border-radius: 0.5em;
   background: #e8e8e8;
   border: 1px solid #e8e8e8;
-  min-width: 500px;
-  min-height: 120px;
-  border-radius: 25px;
+  min-width: 300px;
+  min-height: 70px;
+  border-radius: 13px;
+  margin-top: 9px;
+  margin-bottom: 5px;
+  display: block;
 }
 
 .form-btn:active {
