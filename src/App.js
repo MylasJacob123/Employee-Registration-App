@@ -9,8 +9,8 @@ function App() {
   const [employees, setEmployees] = useState([]);
   const [employeeToEdit, setEmployeeToEdit] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [toggle, setToggle] = useState(true); 
-  const [btn1Toggle, setBtn1Toggle] = useState(false); 
+  const [toggle, setToggle] = useState(true);
+  const [btn1Toggle, setBtn1Toggle] = useState(false);
 
   const addEmployee = (
     firstName,
@@ -59,15 +59,21 @@ function App() {
 
   return (
     <div className="App">
-      <div class="toggle">
-        <button onClick={() => setToggle(!toggle)} className="form-btn">
+      <div className="toggle">
+        <button
+          onClick={() => setToggle(!toggle)}
+          className={`form-btn ${toggle ? "active" : ""}`}
+        >
           Employee Registration Form
         </button>
         {toggle && <AddFunction add={addEmployee} />}
       </div>
 
-      <div class="toggle">
-        <button onClick={() => setBtn1Toggle(!btn1Toggle)} className="form-btn">
+      <div className="toggle">
+        <button
+          onClick={() => setBtn1Toggle(!btn1Toggle)}
+          className={`form-btn ${btn1Toggle ? "active" : ""}`}
+        >
           Employee Register
         </button>
         {btn1Toggle && <SearchFunction onSearch={handleSearch} />}
@@ -79,7 +85,7 @@ function App() {
           />
         )}
       </div>
-      
+
       {employeeToEdit && (
         <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
       )}

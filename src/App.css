@@ -4,9 +4,8 @@
 }
 
 body {
-  background-color: #42424d
+  background-color: #42424d;
 }
-
 
 .App {
   display: flex;
@@ -42,6 +41,12 @@ body {
   margin-top: 9px;
   margin-bottom: 5px;
   display: block;
+}
+
+.form-btn.active {
+  background: #0a0a23;
+  color: #ffffff;
+  border: 1px solid #0a0a23;
 }
 
 .form-btn:active {
