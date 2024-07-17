@@ -133,8 +133,8 @@ function AddFunction(props) {
         value={gender}
         onChange={(event) => setGender(event.target.value)}>
         <option value=""></option>
-            <option value="1">Male</option>
-            <option value="2">Female</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
       </select>
       {errors.gender && <p className="error">{errors.gender}</p>}
       <br />

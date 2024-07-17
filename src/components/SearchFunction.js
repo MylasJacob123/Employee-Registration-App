@@ -19,7 +19,7 @@ const SearchFunction = ({ onSearch }) => {
       <div class="search-content">
         <input
           className="search-input"
-          type="text"
+          type="number"
           placeholder="Search by ID"
           value={searchTerm}
           onChange={handleChange}
