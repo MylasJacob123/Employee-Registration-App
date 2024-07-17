@@ -57,11 +57,21 @@ function App() {
     employee.id.includes(searchTerm)
   );
 
+  const handleToggle = (form) => {
+    if (form === "registration-form") {
+      setToggle(true);
+      setBtn1Toggle(false);
+    } else if (form === "employee-list") {
+      setToggle(false);
+      setBtn1Toggle(true);
+    }
+  };
+
   return (
     <div className="App">
       <div className="toggle">
         <button
-          onClick={() => setToggle(!toggle)}
+          onClick={() => handleToggle("registration-form")}
           className={`form-btn ${toggle ? "active" : ""}`}
         >
           Employee Registration Form
@@ -71,10 +81,10 @@ function App() {
 
       <div className="toggle">
         <button
-          onClick={() => setBtn1Toggle(!btn1Toggle)}
+          onClick={() => handleToggle("employee-list")}
           className={`form-btn ${btn1Toggle ? "active" : ""}`}
         >
-          Employee Register
+          Employee List
         </button>
         {btn1Toggle && <SearchFunction onSearch={handleSearch} />}
         {btn1Toggle && (

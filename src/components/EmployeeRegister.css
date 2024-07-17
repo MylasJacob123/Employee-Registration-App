@@ -19,31 +19,34 @@ table {
   max-height: fit-content;
 }
 
-table,
-th,
-td {
+table, th, td {
   border: 1px solid;
 }
 
 td {
-    text-align: center;
+  text-align: center;
+}
+
+.table-statement {
+  font-size: 1.3em;
+  color: gray;
 }
 
 .edit {
-    width: 65px;
-    height: 26px;
-    background-color: #0a0a23;
-    color: whitesmoke;
-    margin-top: 2px;
-    margin-bottom: 4px;
-    border: none;
+  width: 65px;
+  height: 26px;
+  background-color: #0a0a23;
+  color: whitesmoke;
+  margin-top: 2px;
+  margin-bottom: 4px;
+  border: none;
 }
 
 .delete {
-    width: 65px;
-    height: 26px;
-    background-color: red;
-    color: whitesmoke;
-    margin-bottom: 2px;
-    border: none;
+  width: 65px;
+  height: 26px;
+  background-color: red;
+  color: whitesmoke;
+  margin-bottom: 2px;
+  border: none;
 }

@@ -13,13 +13,13 @@ body {
   background-color: #42424d;
   z-index: 1;
   min-height: 100vh;
+  gap: 50px;
 }
 
 .toggle {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 50%;
 }
 
 .form-btn {
