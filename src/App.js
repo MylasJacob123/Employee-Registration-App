@@ -69,33 +69,39 @@ function App() {
 
   return (
     <div className="App">
-      <div className="toggle">
-        <button
-          onClick={() => handleToggle("registration-form")}
-          className={`form-btn ${toggle ? "active" : ""}`}
-        >
-          Employee Registration Form
-        </button>
-        {toggle && <AddFunction add={addEmployee} />}
+      <div className="app-container">
+        <h1 className="app-heading">Employee Registration App</h1>
+        <div class="main-components">
+          <div className="important-buttons">
+            <button
+              onClick={() => handleToggle("registration-form")}
+              className={`form-btn ${toggle ? "active" : ""}`}
+            >
+              Employee Register
+            </button>
+            <button
+              onClick={() => handleToggle("employee-list")}
+              className={`form-btn ${btn1Toggle ? "active" : ""}`}
+            >
+              Employee List
+            </button>
+          </div>
+          <div className="form-content">
+            {toggle && <AddFunction add={addEmployee} />}
+            {btn1Toggle && (
+              <>
+                <SearchFunction onSearch={handleSearch} />
+                <EmployeeRegister
+                  employees={filteredEmployees}
+                  onDelete={deleteEmployee}
+                  onEdit={editEmployee}
+                />
+              </>
+            )}
+          </div>
+        </div>
       </div>
-
-      <div className="toggle">
-        <button
-          onClick={() => handleToggle("employee-list")}
-          className={`form-btn ${btn1Toggle ? "active" : ""}`}
-        >
-          Employee List
-        </button>
-        {btn1Toggle && <SearchFunction onSearch={handleSearch} />}
-        {btn1Toggle && (
-          <EmployeeRegister
-            employees={filteredEmployees}
-            onDelete={deleteEmployee}
-            onEdit={editEmployee}
-          />
-        )}
-      </div>
-
+  
       {employeeToEdit && (
         <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
       )}

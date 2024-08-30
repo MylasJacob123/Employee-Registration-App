@@ -15,7 +15,7 @@ const SearchFunction = ({ onSearch }) => {
 
   return (
     <div className="search">
-      <label><span>Search</span></label>
+      {/* <label><span>Search</span></label> */}
       <div class="search-content">
         <input
           className="search-input"

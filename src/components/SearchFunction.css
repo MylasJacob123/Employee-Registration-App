@@ -6,11 +6,11 @@
   margin: 50px;
 }
 
-span {
+/* span {
   font-weight: 640;
   font-size: 1.4em;
   color: whitesmoke;
-}
+} */
 
 .search-content {
   display: flex;
