@@ -11,6 +11,7 @@ function AddFunction(props) {
   const [position, setPosition] = useState("");
   const [id, setId] = useState("");
   const [errors, setErrors] = useState({});
+  const [image, setImage] = useState("");
 
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -27,6 +28,17 @@ function AddFunction(props) {
     return re.test(id);
   };
 
+  const handleImageUpload = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setImage(reader.result);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
   const add = () => {
     const newErrors = {};
 
@@ -38,6 +50,7 @@ function AddFunction(props) {
     if (!phoneNumber) newErrors.phoneNumber = "Phone number is required";
     if (!position) newErrors.position = "Position is required";
     if (!id) newErrors.id = "Employee ID is required";
+    if (!image) newErrors.image = "Employee image is required";
 
     if (email && !validateEmail(email))
       newErrors.email = "Invalid email format";
@@ -45,7 +58,7 @@ function AddFunction(props) {
       newErrors.age = "Age must be between 18 and 60";
     if (phoneNumber && !validatePhoneNumber(phoneNumber))
       newErrors.phoneNumber = "Phone number must be 10 digits";
-    if (id && !validateId(id)) newErrors.id = "Employee ID 5 digits";
+    if (id && !validateId(id)) newErrors.id = "Employee ID must be 5 digits";
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
@@ -62,7 +75,8 @@ function AddFunction(props) {
       gender,
       phoneNumber,
       position,
-      id
+      id,
+      image
     );
     setFirstName("");
     setLastName("");
@@ -73,7 +87,9 @@ function AddFunction(props) {
     setPosition("");
     setId("");
     setErrors({});
+    setImage("");
   };
+
 
   return (
     <div className="employee-form">
@@ -191,7 +207,31 @@ function AddFunction(props) {
       />
       {errors.id && <p className="error">{errors.id}</p>}
       <br />
+
+      <label htmlFor="image">Employee Image</label>
+      <input
+        id="image"
+        name="image"
+        type="text"
+        placeholder="Image URL"
+        required
+        value={image}
+        onChange={(event) => setImage(event.target.value)}
+      />
+      {errors.image && <p className="error">{errors.image}</p>}
       <br />
+
+      <label htmlFor="image-upload">Or Upload Employee Image</label>
+      <input
+        id="image-upload"
+        name="image-upload"
+        type="file"
+        accept="image/*"
+        onChange={handleImageUpload}
+      />
+      {errors.image && <p className="error">{errors.image}</p>}
+      <br />
+      
       <button className="btn" onClick={add}>
         Submit
       </button>

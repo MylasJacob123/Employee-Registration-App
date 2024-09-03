@@ -17,6 +17,7 @@ function EmployeeRegister({ employees, onDelete, onEdit }) {
         <table>
           <thead>
             <tr>
+              <th>Employee Image</th>
               <th>First Name</th>
               <th>Last Name</th>
               <th>Email Address</th>
@@ -31,6 +32,13 @@ function EmployeeRegister({ employees, onDelete, onEdit }) {
           <tbody>
             {employees.map((employee, index) => (
               <tr key={index}>
+              <td>
+                <img
+                  src={employee.image}
+                  alt={`${employee.firstName} ${employee.lastName}`}
+                  className="employee-image"
+                />
+              </td>
                 <td>{employee.firstName}</td>
                 <td>{employee.lastName}</td>
                 <td>{employee.email}</td>

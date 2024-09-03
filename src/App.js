@@ -9,22 +9,14 @@ function App() {
   const [employees, setEmployees] = useState([]);
   const [employeeToEdit, setEmployeeToEdit] = useState(null);
   const [searchTerm, setSearchTerm] = useState("");
-  const [toggle, setToggle] = useState(true);
-  const [btn1Toggle, setBtn1Toggle] = useState(false);
+  const [toggle, setToggle] = useState(true);  // Registration form toggle
+  const [btn1Toggle, setBtn1Toggle] = useState(false);  // Employee list toggle
+  const [editToggle, setEditToggle] = useState(false);  // Update form toggle
 
-  const addEmployee = (
-    firstName,
-    lastName,
-    email,
-    age,
-    gender,
-    phoneNumber,
-    position,
-    id
-  ) => {
+  const addEmployee = (firstName, lastName, email, age, gender, phoneNumber, position, id, image) => {
     setEmployees((prevEmployees) => [
       ...prevEmployees,
-      { firstName, lastName, email, age, gender, phoneNumber, position, id },
+      { firstName, lastName, email, age, gender, phoneNumber, position, id, image },
     ]);
   };
 
@@ -43,10 +35,15 @@ function App() {
       )
     );
     setEmployeeToEdit(null);
+    setEditToggle(false);  // Hide the update form
+    setBtn1Toggle(true);  // Show the employee list
   };
 
   const editEmployee = (employee) => {
     setEmployeeToEdit(employee);
+    setEditToggle(true);
+    setToggle(false);
+    setBtn1Toggle(false);
   };
 
   const handleSearch = (term) => {
@@ -61,9 +58,11 @@ function App() {
     if (form === "registration-form") {
       setToggle(true);
       setBtn1Toggle(false);
+      setEditToggle(false);
     } else if (form === "employee-list") {
       setToggle(false);
       setBtn1Toggle(true);
+      setEditToggle(false);
     }
   };
 
@@ -102,8 +101,15 @@ function App() {
         </div>
       </div>
   
-      {employeeToEdit && (
-        <UpdateFunction employee={employeeToEdit} onUpdate={updateEmployee} />
+      {editToggle && (
+        <UpdateFunction 
+          employee={employeeToEdit} 
+          onUpdate={updateEmployee} 
+          onCancel={() => {
+            setEditToggle(false);
+            setBtn1Toggle(true);
+          }}
+        />
       )}
     </div>
   );
